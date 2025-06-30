@@ -1,6 +1,9 @@
 import random
 import string
 import pyperclip
+import logging
+logging.basicConfig(level=logging.INFO)
+
 
 
 def generate_password(length=12,use_symbols=True):
@@ -44,6 +47,8 @@ def main():
 
     password = generate_password(length, use_symbols)
     print("Generated Password:", password)
+
+    logging.info("Password generated successfully.")
 
     pyperclip.copy(password)
     print("Password copied to clipboard.")
