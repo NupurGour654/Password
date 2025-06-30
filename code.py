@@ -1,5 +1,7 @@
 import random
 import string
+import pyperclip
+
 
 def generate_password(length=12,use_symbols=True):
     """Generate a secure random password with uppercase, lowercase, digits, and special characters."""
@@ -25,7 +27,9 @@ def generate_password(length=12,use_symbols=True):
     return ''.join(password)
 
 def main():
-     """Takes user input, validates, and generates password."""
+    
+def main():
+    """Takes user input, validates, and generates password."""
     try:
         length = int(input("Enter password length (min 8): "))
     except ValueError:
@@ -38,9 +42,13 @@ def main():
 
     use_symbols = input("Include special characters? (y/n): ").lower() == 'y'
 
-    print("Generated Password:", generate_password(length, use_symbols))
+    password = generate_password(length, use_symbols)
+    print("Generated Password:", password)
 
-    # Password strength meter
+    pyperclip.copy(password)
+    print("Password copied to clipboard.")
+
+    # Optional: Strength checker
     if length < 10:
         print("Strength: Weak")
     elif length < 14:
@@ -50,4 +58,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
