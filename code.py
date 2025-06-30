@@ -11,7 +11,7 @@ def generate_password(length=12):
     all_chars = uppercase + lowercase + digits + special_chars
     password = [
         random.choice(uppercase),
-        random.choice(lowercase),
+        random.choice(lowercase)
         random.choice(digits),
         random.choice(special_chars)
     ]
@@ -23,4 +23,19 @@ def generate_password(length=12):
     
     return ''.join(password)
 
-print("Generated Password:", generate_password(16))
+def main():
+    try:
+        length = int(input("Enter password length (min 8): "))
+    except ValueError:
+        print("Invalid input. Please enter a number.")
+        return
+
+    if length < 8:
+        print("Password too short. Use 8+ characters.")
+        return
+
+    print("Generated Password:", generate_password(length))
+
+if __name__ == "__main__":
+    main()
+
