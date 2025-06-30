@@ -25,6 +25,7 @@ def generate_password(length=12,use_symbols=True):
     return ''.join(password)
 
 def main():
+     """Takes user input, validates, and generates password."""
     try:
         length = int(input("Enter password length (min 8): "))
     except ValueError:
@@ -35,8 +36,18 @@ def main():
         print("Password too short. Use 8+ characters.")
         return
 
-    print("Generated Password:", generate_password(length))
+    use_symbols = input("Include special characters? (y/n): ").lower() == 'y'
+
+    print("Generated Password:", generate_password(length, use_symbols))
+
+    # Password strength meter
+    if length < 10:
+        print("Strength: Weak")
+    elif length < 14:
+        print("Strength: Moderate")
+    else:
+        print("Strength: Strong")
 
 if __name__ == "__main__":
     main()
-
+    
