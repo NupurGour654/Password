@@ -14,6 +14,10 @@ logging.basicConfig(level=logging.INFO)
 
 
 def generate_password(length=12,use_symbols=True):
+# Ensure at least one of each character type
+# Fill the rest with random chars
+# Shuffle to mix order
+
     """Generate a secure random password with character diversity."""
     special_chars = SYMBOLS if use_symbols else ''
     all_chars = UPPERCASE + LOWERCASE + DIGITS + special_chars
