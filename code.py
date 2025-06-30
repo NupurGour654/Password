@@ -1,12 +1,13 @@
 import random
 import string
 
-def generate_password(length=12):
+def generate_password(length=12,use_symbols=True):
     """Generate a secure random password with uppercase, lowercase, digits, and special characters."""
     uppercase = string.ascii_uppercase
     lowercase = string.ascii_lowercase
     digits = string.digits
-    special_chars = string.punctuation
+    special_chars = string.punctuation if use_symbols else ''
+
     
     all_chars = uppercase + lowercase + digits + special_chars
     password = [
