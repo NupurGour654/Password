@@ -29,9 +29,10 @@ def generate_password(length=12,use_symbols=True):
     random.shuffle(password)
     return ''.join(password)
 
-def main():
     
 def main():
+    print("=== Secure Password Generator ===")
+
     """Takes user input, validates, and generates password."""
     try:
         length = int(input("Enter password length (min 8): "))
