@@ -2,31 +2,31 @@ import random
 import string
 import pyperclip
 import logging
+
+UPPERCASE = string.ascii_uppercase
+LOWERCASE = string.ascii_lowercase
+DIGITS = string.digits
+SYMBOLS = string.punctuation
+
+
 logging.basicConfig(level=logging.INFO)
 
 
 
 def generate_password(length=12,use_symbols=True):
-    """Generate a secure random password with uppercase, lowercase, digits, and special characters."""
-    uppercase = string.ascii_uppercase
-    lowercase = string.ascii_lowercase
-    digits = string.digits
-    special_chars = string.punctuation if use_symbols else ''
+    """Generate a secure random password with character diversity."""
+    special_chars = SYMBOLS if use_symbols else ''
+    all_chars = UPPERCASE + LOWERCASE + DIGITS + special_chars
 
-    
-    all_chars = uppercase + lowercase + digits + special_chars
     password = [
-        random.choice(uppercase),
-        random.choice(lowercase)
-        random.choice(digits),
-        random.choice(special_chars)
+        random.choice(UPPERCASE),
+        random.choice(LOWERCASE),
+        random.choice(DIGITS),
+        random.choice(special_chars) if use_symbols else random.choice(DIGITS)
     ]
-    
-    password += random.choices(all_chars, k=length - 4)
-    
 
+    password += random.choices(all_chars, k=length - 4)
     random.shuffle(password)
-    
     return ''.join(password)
 
 def main():
